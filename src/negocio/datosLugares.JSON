@@ -1,0 +1,31 @@
+{
+  "listaLugares": {
+    "elements": [
+      {
+        "Lugar ": "LOS POLVORINES",
+        "latitud ": -34.51504375999336,
+        "longitud ": -58.69720458984375
+      },
+      {
+        "Lugar ": "SANTA MARIA",
+        "latitud ": -34.5600111590844,
+        "longitud ": -58.749046325683594
+      },
+      {
+        "Lugar ": "BELLA VISTA",
+        "latitud ": -34.55265966077843,
+        "longitud ": -58.693084716796875
+      },
+      {
+        "Lugar ": "JOSE C PAZ",
+        "latitud ": -34.522681445413944,
+        "longitud ": -58.761749267578125
+      },
+      {
+        "Lugar ": "TIERRAS ALTAS",
+        "latitud ": -34.48278803629342,
+        "longitud ": -58.73943328857422
+      }
+    ]
+  }
+}
