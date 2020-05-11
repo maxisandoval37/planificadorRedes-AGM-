@@ -92,8 +92,8 @@ class TestLogica {
     } 
     @Test
     void testEsUnNumero() {
-        assertTrue(Logica.esUnNumuero('e'));//devuelve true si no es un char
-        assertFalse(Logica.esUnNumuero('5'));
+        assertTrue(Logica.noEsUnNumuero('e'));
+        assertFalse(Logica.noEsUnNumuero('5'));
     }
     
       

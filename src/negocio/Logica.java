@@ -79,7 +79,7 @@ public class Logica {
 		return sumaTotal;
 	}
 
-	public static boolean esUnNumuero(char c) {
+	public static boolean noEsUnNumuero(char c) {
 		return ((c < '0') || (c > '9')) && (c != '\b');
 	}
 

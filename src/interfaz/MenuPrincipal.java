@@ -69,7 +69,7 @@ public class MenuPrincipal {
 		textFieldIngresarPrecio.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent e) {
 				// Verificar si la tecla pulsada no es un digito
-				if (Logica.esUnNumuero(e.getKeyChar())) {
+				if (Logica.noEsUnNumuero(e.getKeyChar())) {
 					e.consume(); // ignorar el evento de teclado
 				} else {
 					if (textFieldIngresarPrecio.getText().length() >= 7)
