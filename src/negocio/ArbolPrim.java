@@ -4,7 +4,7 @@ import java.util.*;
 
 public class ArbolPrim {
 	
-	private List<Arista> retAristas;
+	private static List<Arista> retAristas;
 	private List<Lugar> lugaresRecorridos;
 	private List<Arista> aristasClonadas;
 
@@ -69,15 +69,20 @@ public class ArbolPrim {
 		return min;
 	}
 	
+
 	private boolean generaCiclo(List<Lugar> l, Arista arista) {
 		return l.contains(arista.lugarA) && l.contains(arista.lugarB);
 	}
 	
-	public List<Arista> getAristas() {
-		return retAristas;
+	public static double pesoTotalArbolPrim() {
+		double sumaTotal = 0;
+		for (Arista a : getRetAristas()) {
+			sumaTotal += a.Distancia();
+		}
+		return sumaTotal;
 	}
 	
-	public List<Arista> getRetAristas() {
+	public static List<Arista> getRetAristas() { 
 		return retAristas;
 	}
 

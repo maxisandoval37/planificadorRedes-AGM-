@@ -1,33 +1,41 @@
 package negocio;
 
 import java.util.*;
-import org.openstreetmap.gui.jmapviewer.*;
+
 
 public class Lugar {
 
-	private Coordinate coordenada;
+	private double longitud1;
+	private double latitud1;
 	private String nombre;
+	private Coordenada coord;
 	public Map<Integer,Lugar> listaVecinos;//POS, LUGAR
 
 	
-	public Lugar(String nomb, Coordinate coord) {
+	public Lugar(String nomb, double latitud, double longitud) {
 		this.nombre = nomb;
-		coordenada = coord;
+		longitud1=longitud;
+		latitud1=latitud;
+		coord=new Coordenada(latitud,longitud);
 		listaVecinos = new HashMap<Integer,Lugar>();
 	}
 	
-	public void agregarVecino(int indice,Lugar l) {
-		listaVecinos.put(indice, l);
+	public Coordenada getCoordenate() {
+		return coord;
+	}
+
+	public void agregarVecino(int indice,Lugar lugar) {
+		listaVecinos.put(indice, lugar);
 	}
 	
 	public double calcularDistanciaA_B(Lugar lugarB) {
 
 		double radioTierra = 6371; // km
 
-		Double lat1 = Math.toRadians(coordenada.getLat());
-		Double lon1 = Math.toRadians(coordenada.getLon());
-		Double lat2 = Math.toRadians(lugarB.coordenada.getLat());
-		Double lon2 = Math.toRadians(lugarB.coordenada.getLon());
+		Double lat1 = Math.toRadians(this.latitud1);
+		Double lon1 = Math.toRadians(this.longitud1);
+		Double lat2 = Math.toRadians(lugarB.getLatitud1());
+		Double lon2 = Math.toRadians(lugarB.getLongitud1());
 
 		double dlon = (lon2 - lon1);
 		double dlat = (lat2 - lat1);
@@ -43,19 +51,17 @@ public class Lugar {
 		return (int) distanciaEnMts;// retorna en metros
 	}
 	
+	public double getLongitud1() {
+		return longitud1;
+	}
+
+	public double getLatitud1() {
+		return latitud1;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
 	
-	public double getLatitud() {
-		return coordenada.getLat();
-	}
 
-	public double getLongitud() {
-		return coordenada.getLon();
-	}
-
-	public Coordinate getCoordenada() {
-		return coordenada;
-	}
 }

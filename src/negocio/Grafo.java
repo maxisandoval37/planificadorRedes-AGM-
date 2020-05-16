@@ -29,7 +29,7 @@ public class Grafo {
 
 	public List<Arista> aristasConAGM() {
 		ArbolPrim AP = new ArbolPrim((LinkedList<Arista>) listaAristas);
-		return AP.getAristas();
+		return AP.getRetAristas();
 	}
 
 	public List<Arista> getListaAristas() {

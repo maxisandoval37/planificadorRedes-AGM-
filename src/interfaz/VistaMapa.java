@@ -7,8 +7,13 @@ import javax.swing.*;
 import org.openstreetmap.gui.jmapviewer.*;
 
 
-import negocio.Logica;
-import negocio.LugaresJSON;
+import negocio.*;
+//import negocio.LugaresJSON;
+//import negocio.ArbolPrim;
+//import negocio.Arista;
+
+import interfaz.Camino;
+
 
 public class VistaMapa {
 
@@ -17,7 +22,11 @@ public class VistaMapa {
 	private JPanel panelBotones;
 	private JPanel panelLabels;
 	private JMapViewer mapa;
-	private Logica logica;
+	
+	
+	private Calculos calculos;
+	private Camino caminos;
+	
 	private MenuPrincipal menuInicio;
 	private JLabel lblpesoArbol;
 	private JLabel lblPrecioTotalRed;
@@ -32,10 +41,12 @@ public class VistaMapa {
 	ArrayList<String> lugaresComboBox;
 	LinkedList<MapPolygonImpl> grafoActual;
 	
-	
 	public VistaMapa() {
-		logica = new Logica();
+		LugaresJSON.abrirJSONyCopiar();
+		calculos = new Calculos();
+		caminos = new Camino();
 		menuInicio = new MenuPrincipal();
+		
 		grafoActual = new LinkedList<MapPolygonImpl>();
 		
 		crearVentana();
@@ -91,7 +102,7 @@ public class VistaMapa {
 		inicializarListaDesplegable();
 	}
 	//			FIN PANELES
-
+	
 	//				INICIO LABELS
 	private void inicializarLabePrecioTotalRed() {
 		lblPrecioTotalRed = new JLabel();
@@ -155,7 +166,7 @@ public class VistaMapa {
 		btnAGM = new JButton("Arbol Generador Minimo");
 		btnAGM.setBounds(10, 295, 185, 50);
 		panelBotones.add(btnAGM);
-		
+
 		accionBotonGenerarMin();
 	}
 	
@@ -175,15 +186,15 @@ public class VistaMapa {
 	private void accionBotonGenerarMin() {
 		btnAGM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				LugaresJSON.guardarLugaresEnJSON();//ALMACENA EN EL JSON
 				quitarGrafos();
-				grafoActual = logica.arbolGeneradorMinimo();
+				grafoActual = caminos.arbolGeneradorMinimo();
 				for (MapPolygonImpl camino : grafoActual) {
 					mapa.addMapPolygon(camino);
 				}
-				lblPrecioTotalRed.setText("GASTO TOTAL:  $" + logica.calcularPrecioPorMetro(MenuPrincipal.precioPormetro,logica.pesoTotalArbolPrim()));
-				lblpesoArbol.setText("PESO ARBOL:  " + logica.pesoTotalArbolPrim()+" 'MTS'");
+				lblPrecioTotalRed.setText("GASTO TOTAL:  $" + calculos.precioFinal(MenuPrincipal.precioPormetro));
+				lblpesoArbol.setText("PESO ARBOL:  " + ArbolPrim.pesoTotalArbolPrim()+" 'MTS'");
 				lblPrecioPorMTS.setText("COSTO POR METRO:  $" + MenuPrincipal.precioPormetro);
-				
 			}
 		});
 	}
@@ -192,7 +203,7 @@ public class VistaMapa {
 		btnDibujarGrafo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				quitarGrafos();
-				grafoActual = (LinkedList<MapPolygonImpl>) logica.caminos;
+				grafoActual = (LinkedList<MapPolygonImpl>) caminos.listaCaminos;
 				for (MapPolygonImpl camino : grafoActual)
 					mapa.addMapPolygon(camino);
 			}
@@ -245,8 +256,9 @@ public class VistaMapa {
 
 	private void marcarCoordenadasConJSON(String nombre, double latitud, double longitud) {
 		Coordinate coord = new Coordinate(latitud,longitud);
+		//coordenada = new Coordenada(latitud,longitud);
 		mapa.addMapMarker(new MapMarkerDot(nombre, coord));
-		logica.altaLugar(nombre, coord);
+		caminos.altaLugar(nombre, latitud,longitud);
 	}
 	//		FIN ACCIONES DE BOTONES
 	
@@ -279,7 +291,8 @@ public class VistaMapa {
 							MapMarkerDot marcador=new MapMarkerDot(nombre, coordenadaClick);
 							marcador.getStyle().setBackColor(Color.red);
 							mapa.addMapMarker(marcador);
-							logica.altaLugar(nombre, coordenadaClick);
+							
+							caminos.altaLugar(nombre, coordenadaClick.getLat(),coordenadaClick.getLon());
 						}
 
 						else {

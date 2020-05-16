@@ -115,7 +115,7 @@ public class LugaresJSON {
 		jsonConLugares.agregarLugar(l);
 	}
 	
-	protected static void abrirJSONyCopiar() {
+	public static void abrirJSONyCopiar() {
 		LugaresJSON abrirArchivoJSON = LugaresJSON.leerJSON(rutaDeJSON);
 		if (abrirArchivoJSON != null) {
 			for (JsonElement l : abrirArchivoJSON.getListaLugares()) {
@@ -126,7 +126,7 @@ public class LugaresJSON {
 		}
 	}
 
-	protected static void guardarLugaresEnJSON() {
+	public static void guardarLugaresEnJSON() {
 		String nuevoDatosJSON = LugaresJSON.jsonConLugares.generarJSON();
 		LugaresJSON.jsonConLugares.escribirJSON(nuevoDatosJSON, rutaDeJSON);
 	}
@@ -134,8 +134,8 @@ public class LugaresJSON {
 	protected static JsonObject transformarEnJson(Lugar l) {
 		JsonObject nuevoJSON= new JsonObject ();
 		nuevoJSON.addProperty("Lugar ", l.getNombre());
-		nuevoJSON.addProperty("latitud ", l.getLatitud());
-		nuevoJSON.addProperty("longitud ", l.getLongitud());
+		nuevoJSON.addProperty("latitud ", l.getLatitud1());
+		nuevoJSON.addProperty("longitud ", l.getLongitud1());
 		return nuevoJSON;
 	}
 	
