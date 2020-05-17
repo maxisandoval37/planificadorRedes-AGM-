@@ -1,5 +1,6 @@
 package interfaz;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -41,11 +42,16 @@ public class Camino {
 		return caminosMinimos;
 	}
 
-	public void altaLugar(String nombre, double latitud, double longitud) {
-		Lugar l = new Lugar(nombre,  latitud,  longitud);
-		Coordinate c = new Coordinate(latitud,longitud);
-		getCoordLugares().add(c);
-		getGrafo().agregarLugar(l);
+	public void altaLugar(String nombre, double latitud, double longitud)  {
+		Lugar lugar = null;
+		try {
+			lugar = new Lugar(nombre,  latitud,  longitud);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Coordinate coord = new Coordinate(latitud,longitud);
+		getCoordLugares().add(coord);
+		getGrafo().agregarLugar(lugar);
 		actualizarCaminos();
 	}
 	

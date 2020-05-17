@@ -3,6 +3,8 @@ package interfaz;
 import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
+import java.io.IOException;
+
 import javax.swing.*;
 import org.openstreetmap.gui.jmapviewer.*;
 
@@ -22,11 +24,8 @@ public class VistaMapa {
 	private JPanel panelBotones;
 	private JPanel panelLabels;
 	private JMapViewer mapa;
-	
-	
-	private Calculos calculos;
+	private Conexion calculos;
 	private Camino caminos;
-	
 	private MenuPrincipal menuInicio;
 	private JLabel lblpesoArbol;
 	private JLabel lblPrecioTotalRed;
@@ -38,12 +37,14 @@ public class VistaMapa {
 	private JButton btnAGM;
 	private JButton btnReset;
 	private JTextField tfAuxComboBox;
+	private LugaresJSON jsonConLugares;
 	ArrayList<String> lugaresComboBox;
 	LinkedList<MapPolygonImpl> grafoActual;
 	
 	public VistaMapa() {
-		LugaresJSON.abrirJSONyCopiar();
-		calculos = new Calculos();
+		jsonConLugares = new LugaresJSON();
+		jsonConLugares.abrirJSONyCopiar();
+		calculos = new Conexion();
 		caminos = new Camino();
 		menuInicio = new MenuPrincipal();
 		
@@ -134,11 +135,11 @@ public class VistaMapa {
 
 	private void agregarDatosListaDesplegable() {
 		lugaresComboBox = new ArrayList<String>();
-		if (!LugaresJSON.jsonConLugares.estaVacio()) {
-			for (int i = LugaresJSON.jsonConLugares.tamaño()-1;i>=0;i--) {
-				if (!lugaresComboBox.contains(LugaresJSON.jsonConLugares.getNombre(i))) {
-					comboBox.addItem(LugaresJSON.jsonConLugares.getNombre(i));
-					lugaresComboBox.add(LugaresJSON.jsonConLugares.getNombre(i));
+		if (!jsonConLugares.estaVacio()) {
+			for (int i = jsonConLugares.tamaño()-1;i>=0;i--) {
+				if (!lugaresComboBox.contains(jsonConLugares.getNombre(i))) {
+					comboBox.addItem(jsonConLugares.getNombre(i));
+					lugaresComboBox.add(jsonConLugares.getNombre(i));
 				}	
 			}
 		}
@@ -186,7 +187,7 @@ public class VistaMapa {
 	private void accionBotonGenerarMin() {
 		btnAGM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LugaresJSON.guardarLugaresEnJSON();//ALMACENA EN EL JSON
+				jsonConLugares.guardarLugaresEnJSON();//ALMACENA EN EL JSON
 				quitarGrafos();
 				grafoActual = caminos.arbolGeneradorMinimo();
 				for (MapPolygonImpl camino : grafoActual) {
@@ -239,12 +240,15 @@ public class VistaMapa {
 			public void actionPerformed(ActionEvent e) {
 				tfAuxComboBox.setText(comboBox.getSelectedItem().toString());
 				
-				for (int i = LugaresJSON.jsonConLugares.tamaño()-1;i>=0;i--) {
-					if (LugaresJSON.jsonConLugares.getNombre(i).equals(tfAuxComboBox.getText().toString())) {
-
-						marcarCoordenadasConJSON(LugaresJSON.jsonConLugares.getNombre(i),
-						LugaresJSON.jsonConLugares.getLatitud(i),
-						LugaresJSON.jsonConLugares.getLongitud(i));
+				for (int i = jsonConLugares.tamaño()-1;i>=0;i--) {
+					if (jsonConLugares.getNombre(i).equals(tfAuxComboBox.getText().toString())) {
+						try {
+							marcarCoordenadasConJSON(jsonConLugares.getNombre(i),
+							jsonConLugares.getLatitud(i),
+							jsonConLugares.getLongitud(i));
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
 					}
 					
 				}
@@ -254,7 +258,7 @@ public class VistaMapa {
 	}
 	
 
-	private void marcarCoordenadasConJSON(String nombre, double latitud, double longitud) {
+	private void marcarCoordenadasConJSON(String nombre, double latitud, double longitud) throws IOException {
 		Coordinate coord = new Coordinate(latitud,longitud);
 		//coordenada = new Coordenada(latitud,longitud);
 		mapa.addMapMarker(new MapMarkerDot(nombre, coord));
@@ -287,14 +291,19 @@ public class VistaMapa {
 
 					if ((nombre != null) && (nombre.length() > 0)) {
 
-						if (!LugaresJSON.jsonConLugares.comprobarExistenciaNombre(nombre)) {
+						if (!jsonConLugares.comprobarExistenciaNombre(nombre)) {
 							MapMarkerDot marcador=new MapMarkerDot(nombre, coordenadaClick);
 							marcador.getStyle().setBackColor(Color.red);
 							mapa.addMapMarker(marcador);
-							
 							caminos.altaLugar(nombre, coordenadaClick.getLat(),coordenadaClick.getLon());
+							Lugar lugarNuevo = null;
+								try {
+									lugarNuevo = new Lugar (nombre,coordenadaClick.getLat(),coordenadaClick.getLon());
+								} catch (IOException e1) {
+									e1.printStackTrace();
+								}
+							jsonConLugares.agregarLugar(jsonConLugares.transformarEnJson(lugarNuevo));
 						}
-
 						else {
 							JOptionPane.showMessageDialog(null, "NO SE PUEDE INGRESAR UN NOMBRE REPETIDO");
 						}

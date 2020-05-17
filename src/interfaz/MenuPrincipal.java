@@ -3,7 +3,7 @@ package interfaz;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-import negocio.Calculos;
+import negocio.Conexion;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -69,7 +69,7 @@ public class MenuPrincipal {
 		textFieldIngresarPrecio.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent e) {
 				// Verificar si la tecla pulsada no es un digito
-				if (Calculos.noEsUnNumuero(e.getKeyChar())) {
+				if (Conexion.noEsUnNumuero(e.getKeyChar())) {
 					e.consume(); // ignorar el evento de teclado
 				} else {
 					if (textFieldIngresarPrecio.getText().length() >= 7)

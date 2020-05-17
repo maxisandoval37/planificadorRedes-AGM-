@@ -16,7 +16,7 @@ public class Grafo {
 		if (!(listaLugares.contains(l))) {
 			listaLugares.add(l);
 			cargarAristas(l);
-			LugaresJSON.agregarLugaresAJSON(LugaresJSON.transformarEnJson(l));
+			
 		}
 	}
 
@@ -27,6 +27,7 @@ public class Grafo {
 		}
 	}
 
+	
 	public List<Arista> aristasConAGM() {
 		ArbolPrim AP = new ArbolPrim((LinkedList<Arista>) listaAristas);
 		return AP.getRetAristas();

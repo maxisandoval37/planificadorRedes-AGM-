@@ -1,7 +1,7 @@
 package negocio;
 
 
-public class Calculos {
+public class Conexion {
 	
 	public Double costosPrim= (double)0;
 	
