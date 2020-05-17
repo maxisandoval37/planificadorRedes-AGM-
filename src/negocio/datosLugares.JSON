@@ -18,6 +18,30 @@
         "latitud ": -34.53682345812287,
         "longitud ": -58.73908996582031,
         "provincia ": "Buenos Aires"
+      },
+      {
+        "Lugar ": "NuevoLugar",
+        "latitud ": -34.49891745811857,
+        "longitud ": -58.739776611328125,
+        "provincia ": "Buenos Aires"
+      },
+      {
+        "Lugar ": "Peru",
+        "latitud ": -49.382372787009544,
+        "longitud ": -70.3125,
+        "provincia ": "Santa Cruz"
+      },
+      {
+        "Lugar ": "Lugar2",
+        "latitud ": -34.500049230223105,
+        "longitud ": -58.739776611328125,
+        "provincia ": "Buenos Aires"
+      },
+      {
+        "Lugar ": "ASDASDASDAS",
+        "latitud ": -34.5328639366582,
+        "longitud ": -58.713340759277344,
+        "provincia ": "Buenos Aires"
       }
     ]
   },

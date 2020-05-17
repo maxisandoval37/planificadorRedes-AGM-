@@ -1,7 +1,7 @@
 package negocio;
 
 
-public class Conexion {
+public class Calculo {
 	
 	public Double costosPrim= (double)0;
 	
@@ -22,7 +22,7 @@ public class Conexion {
 		
 		if (kilometros>300000) { //en mts (equivale 300km)
 		
-			System.out.println("ENTRÉ");
+			
 			return aumentoExcedente(kilometros,porcentaje);
 			
 		}

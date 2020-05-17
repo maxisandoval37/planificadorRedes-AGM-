@@ -14,7 +14,7 @@ import negocio.*;
 //import negocio.ArbolPrim;
 //import negocio.Arista;
 
-import interfaz.Camino;
+import interfaz.Conexion;
 
 
 public class VistaMapa {
@@ -24,8 +24,8 @@ public class VistaMapa {
 	private JPanel panelBotones;
 	private JPanel panelLabels;
 	private JMapViewer mapa;
-	private Conexion calculos;
-	private Camino caminos;
+	private Calculo calculos;
+	private Conexion caminos;
 	private MenuPrincipal menuInicio;
 	private JLabel lblpesoArbol;
 	private JLabel lblPrecioTotalRed;
@@ -44,8 +44,8 @@ public class VistaMapa {
 	public VistaMapa() {
 		jsonConLugares = new LugaresJSON();
 		jsonConLugares.abrirJSONyCopiar();
-		calculos = new Conexion();
-		caminos = new Camino();
+		calculos = new Calculo();
+		caminos = new Conexion();
 		menuInicio = new MenuPrincipal();
 		
 		grafoActual = new LinkedList<MapPolygonImpl>();

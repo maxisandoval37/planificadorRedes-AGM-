@@ -11,9 +11,9 @@ import negocio.Arista;
 import negocio.Grafo;
 import negocio.Lugar;
 
-public class Camino {
+public class Conexion {
 
-	public Camino() {
+	public Conexion() {
 		setGrafo(new Grafo());
 		setCoordLugares(new ArrayList<Coordinate>());
 		listaCaminos = new LinkedList<MapPolygonImpl>();
