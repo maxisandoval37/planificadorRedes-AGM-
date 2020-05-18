@@ -3,30 +3,31 @@ package test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openstreetmap.gui.jmapviewer.Coordinate;
-
 import negocio.Arista;
 import negocio.Lugar;
 
+
+
+
+
 class TestArista {
-    Coordinate c1,c2,c3;
-    Lugar a,b,c;
+    Lugar a,b,c,d;
     Arista a1,a2,a3,a4;
     
 ///////////////////////////////////////////////////////////////////////////////////    
 	@BeforeEach
-	public void setUp() {
+	public void setUp() throws IOException {
 
-		c1 = new Coordinate(-34.541631195309726, -58.713340759277344);
-		c2 = new Coordinate(-34.510517393776254, -58.695831298828125);
-		c3 = new Coordinate(-34.48052400815731, -58.698577880859375);
 
-		a = new Lugar("San Miguel", c1);
-		b = new Lugar("Polvorines", c2);
-		c = new Lugar("Pablo Nogues", c3);
+
+		a=new Lugar("San Miguel",-34.541631195309726 ,-58.713340759277344);
+		b=new Lugar("Polvorines",-34.510517393776254,-58.695831298828125);
+		c=new Lugar("Pablo Nogues",-34.48052400815731 ,-58.698577880859375);
+		d=new Lugar("San Miguel",-34.541631195309726 ,-58.713340759277344);
 
 		a1 = new Arista(a, b);
 		a2 = new Arista(b, c);
@@ -52,5 +53,6 @@ class TestArista {
 		assertTrue(a1.compareTo(a1) == 0);// 0 porque es igual
 
 	}
+
 
 }
