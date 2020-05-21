@@ -78,6 +78,24 @@
         "latitud ": -37.300275281344305,
         "longitud ": -67.8515625,
         "provincia ": "La Pampa"
+      },
+      {
+        "Lugar ": "asd",
+        "latitud ": -35.96022296929668,
+        "longitud ": -60.205078125,
+        "provincia ": "Buenos Aires"
+      },
+      {
+        "Lugar ": "vvv",
+        "latitud ": -25.165173368663943,
+        "longitud ": -64.248046875,
+        "provincia ": "Salta"
+      },
+      {
+        "Lugar ": "ggg",
+        "latitud ": -42.68243539838622,
+        "longitud ": -69.08203125,
+        "provincia ": "Chubut"
       }
     ]
   },

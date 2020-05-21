@@ -7,35 +7,37 @@ public class Calculo {
 		return ((c < '0') || (c > '9')) && (c != '\b');
 	}
 
-	public Double calcularPrecioPorMetro(Double precioPorMt, Double metrosTotales) {
+	private Double calcularPrecioPorMetro(Double precioPorMt, Double metrosTotales) {
 		return precioPorMt * metrosTotales;
 	}
 	
-	public Double agregarInteresSiSupero300Km(Double porcentajeAincrementar,Double costoActual) {
+	private Double agregarInteresSiSupero300Km(Double porcentajeAincrementar,Double costoActual, Double DistanciaTotal) {
 		
 		Double porce = (costoActual * porcentajeAincrementar)/100;
 		Double costoConPorcentaje = porce+costoActual;
-		
-		if (costoActual>300000) { //(equivale 300km)
+		if (DistanciaTotal>300000) { //(equivale 300km)
 			return costoConPorcentaje;
 		}
 		else
 			return costoActual;
 	}
 	
-	public Double precioFinal (Double precioPorMetro) {
+	public Double precioFinal (Double precioPorMetro,Double porcentajeInteres,Double ExtraPasarPorProvincia) {
 		Double gastosSinAdicionales = calcularPrecioPorMetro(precioPorMetro,ArbolPrim.pesoTotalArbolPrim());
 		
-		return  agregarInteresSiSupero300Km ((double)30, gastosSinAdicionales);//PONER EL 30% COMO INPUT DEL USER!!
+		Double precioFinal = agregarInteresSiSupero300Km (porcentajeInteres, gastosSinAdicionales,ArbolPrim.pesoTotalArbolPrim());
+		precioFinal+=adicionalPorAtravesarProvincia(ExtraPasarPorProvincia);
+		
+		return precioFinal;
 	}
 	
-	public static boolean intSePasadeLaLongitudDelString(int tamano,String cad) {
+	public static boolean intSePasadeLaLongitudDelString(Double tamano,String cad) {
 		if (cad.length()>tamano)
 			return true;
 		return false;
 	}
 	
-	public int adicionalPorAtravesarProvincia(int costoExtra) {
+	private Double adicionalPorAtravesarProvincia(Double costoExtra) {
 		return (Grafo.getSetProvinciasSinRepetir().size()-1) * costoExtra;
 	}
 	

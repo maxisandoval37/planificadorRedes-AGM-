@@ -30,6 +30,7 @@ public class Grafo {
 	}
 
 	
+	@SuppressWarnings("static-access")
 	public List<Arista> aristasConAGM() {
 		ArbolPrim AP = new ArbolPrim((LinkedList<Arista>) listaAristas);
 		return AP.getRetAristas();

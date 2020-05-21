@@ -26,7 +26,7 @@ public class VistaMapa {
 	private JMapViewer mapa;
 	private Calculo calculos;
 	private Conexion caminos;
-	private MenuPrincipal menuInicio;
+	private VistaMenuPrincipal menuInicio;
 	private JLabel lblpesoArbol;
 	private JLabel lblPrecioTotalRed;
 	private JLabel lblPrecioPorMTS;
@@ -48,7 +48,7 @@ public class VistaMapa {
 		jsonConLugares.abrirJSONyCopiar();
 		calculos = new Calculo();
 		caminos = new Conexion();
-		menuInicio = new MenuPrincipal();
+		menuInicio = new VistaMenuPrincipal();
 		
 		grafoActual = new LinkedList<MapPolygonImpl>();
 		crearVentana();
@@ -188,17 +188,20 @@ public class VistaMapa {
 	private void accionBotonGenerarMin() {
 		btnAGM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(calculos.adicionalPorAtravesarProvincia(20));
 				
-				jsonConLugares.guardarLugaresEnJSON();//ALMACENA EN EL JSON
+				jsonConLugares.guardarLugaresEnJSON();
 				quitarGrafos();
 				grafoActual = caminos.arbolGeneradorMinimo();
 				for (MapPolygonImpl camino : grafoActual) {
 					mapa.addMapPolygon(camino);
 				}
-				lblPrecioTotalRed.setText("GASTO TOTAL:  $" + calculos.precioFinal(MenuPrincipal.precioPormetro));
+				lblPrecioTotalRed.setText("GASTO TOTAL:  $" + 
+				calculos.precioFinal(VistaMenuPrincipal.precioPormetro,VistaMenuPrincipal.porcentajeExtra,
+				VistaMenuPrincipal.costoPorPasarProvincia));
+				
 				lblpesoArbol.setText("PESO ARBOL:  " + ArbolPrim.pesoTotalArbolPrim()+" 'MTS'");
-				lblPrecioPorMTS.setText("COSTO POR METRO:  $" + MenuPrincipal.precioPormetro);
+				
+				lblPrecioPorMTS.setText("COSTO POR METRO:  $" + VistaMenuPrincipal.precioPormetro);
 			}
 		});
 	}
@@ -263,7 +266,6 @@ public class VistaMapa {
 
 	private void marcarCoordenadasConJSON(String nombre, double latitud, double longitud) throws IOException {
 		Coordinate coord = new Coordinate(latitud,longitud);
-		//coordenada = new Coordenada(latitud,longitud);
 		mapa.addMapMarker(new MapMarkerDot(nombre, coord));
 		caminos.altaLugar(nombre, latitud,longitud);
 	}
@@ -274,7 +276,7 @@ public class VistaMapa {
         lblFondo.setBounds(0, 0, 800, 600);
         ventana.getContentPane().add(lblFondo);
 
-        lblFondo.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/interfaz/FONDO.png")));
+        lblFondo.setIcon(new ImageIcon(VistaMenuPrincipal.class.getResource("/interfaz/FONDO.png")));
     }
 	
 	private void quitarGrafos() {
@@ -295,7 +297,7 @@ public class VistaMapa {
 					if (nombre != null && nombre.length() > 0) {
 
 						if (!jsonConLugares.comprobarExistenciaNombre(nombre)) {
-							if (!Calculo.intSePasadeLaLongitudDelString(10, nombre)) {
+							if (!Calculo.intSePasadeLaLongitudDelString((double)10, nombre)) {
 								
 								MapMarkerDot marcador=new MapMarkerDot(nombre, coordenadaClick);
 								marcador.getStyle().setBackColor(Color.red);

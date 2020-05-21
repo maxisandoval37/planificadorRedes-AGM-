@@ -8,7 +8,7 @@ public class Main_TP {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuPrincipal inicio = new MenuPrincipal();
+					VistaMenuPrincipal inicio = new VistaMenuPrincipal();
 					inicio.menuPP.setResizable(false);
 					inicio.menuPP.setVisible(true);
 				} catch (Exception e) {

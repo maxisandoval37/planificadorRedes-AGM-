@@ -60,7 +60,7 @@ public class Lugar {
 
 		double distanciaEnMts = radioTierra * c * 1000;
 
-		return (int) distanciaEnMts;// retorna en metros
+		return distanciaEnMts;// retorna en metros
 	}
 	
 	
