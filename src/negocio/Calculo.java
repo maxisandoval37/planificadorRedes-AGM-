@@ -1,6 +1,5 @@
 package negocio;
 
-
 public class Calculo {
 	
 	public Double costosPrim= (double)0;
@@ -13,27 +12,28 @@ public class Calculo {
 		return precioPorMt * metrosTotales;
 	}
 	
-	private Double aumentoExcedente(Double costo, Double porcentaje) {
-		Double porc = (costo * porcentaje)/100;
-		return porc+costo;
-	}
-	
-	public Double superoKm(Double porcentaje,Double kilometros) {
+	public Double agregarInteresSiSupero300Km(Double porcentajeAincrementar,Double costoActual) {
 		
-		if (kilometros>300000) { //en mts (equivale 300km)
+		Double porce = (costoActual * porcentajeAincrementar)/100;
+		Double costoConPorcentaje = porce+costoActual;
 		
-			
-			return aumentoExcedente(kilometros,porcentaje);
-			
+		if (costoActual>300000) { //(equivale 300km)
+			return costoConPorcentaje;
 		}
 		else
-			return kilometros;
+			return costoActual;
 	}
 	
 	public Double precioFinal (Double precioPorMetro) {
-		Double prePorMetro = calcularPrecioPorMetro(precioPorMetro,ArbolPrim.pesoTotalArbolPrim());
+		Double gastosSinAdicionales = calcularPrecioPorMetro(precioPorMetro,ArbolPrim.pesoTotalArbolPrim());
 		
-		return  superoKm ((double)30, prePorMetro);
+		return  agregarInteresSiSupero300Km ((double)30, gastosSinAdicionales);//PONER EL 30% COMO INPUT DEL USER!!
+	}
+	
+	public static boolean intSePasadeLaLongitudDelString(int tamano,String cad) {
+		if (cad.length()>tamano)
+			return true;
+		return false;
 	}
 
 	

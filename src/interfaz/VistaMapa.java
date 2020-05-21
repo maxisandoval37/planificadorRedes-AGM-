@@ -129,7 +129,7 @@ public class VistaMapa {
 	private void inicializarListaDesplegable(){
 			comboBox = new JComboBox<String>();
 			agregarDatosListaDesplegable();
-			comboBox.setBounds(20, 15, 80, 25);
+			comboBox.setBounds(20, 15, jsonConLugares.JSONsizeNombreMasLargo()*10, 25);
 			accionComboBox();
 		}
 
@@ -288,22 +288,30 @@ public class VistaMapa {
 				if (e.getButton() == MouseEvent.BUTTON1) {
 					Coordinate coordenadaClick = (Coordinate) mapa.getPosition(e.getPoint());
 					String nombre = JOptionPane.showInputDialog("NOMBRE: ");
-
-					if ((nombre != null) && (nombre.length() > 0)) {
+						
+					if (nombre != null && nombre.length() > 0) {
 
 						if (!jsonConLugares.comprobarExistenciaNombre(nombre)) {
-							MapMarkerDot marcador=new MapMarkerDot(nombre, coordenadaClick);
-							marcador.getStyle().setBackColor(Color.red);
-							mapa.addMapMarker(marcador);
-							caminos.altaLugar(nombre, coordenadaClick.getLat(),coordenadaClick.getLon());
-							Lugar lugarNuevo = null;
-								try {
-									lugarNuevo = new Lugar (nombre,coordenadaClick.getLat(),coordenadaClick.getLon());
-								} catch (IOException e1) {
-									e1.printStackTrace();
-								}
-							jsonConLugares.agregarLugar(jsonConLugares.transformarEnJson(lugarNuevo));
+							if (!Calculo.intSePasadeLaLongitudDelString(10, nombre)) {
+								
+								MapMarkerDot marcador=new MapMarkerDot(nombre, coordenadaClick);
+								marcador.getStyle().setBackColor(Color.red);
+								mapa.addMapMarker(marcador);
+								caminos.altaLugar(nombre, coordenadaClick.getLat(),coordenadaClick.getLon());
+								Lugar lugarNuevo = null;
+									try {
+										lugarNuevo = new Lugar (nombre,coordenadaClick.getLat(),coordenadaClick.getLon());
+									} catch (IOException e1) {
+										e1.printStackTrace();
+									}
+								jsonConLugares.agregarLugar(jsonConLugares.transformarEnJson(lugarNuevo));
+							}
+							
+							else {
+								JOptionPane.showMessageDialog(null, "EL NOMBRE DEBE TENER MENOS DE 10 CARACTERES");
+							}
 						}
+						
 						else {
 							JOptionPane.showMessageDialog(null, "NO SE PUEDE INGRESAR UN NOMBRE REPETIDO");
 						}

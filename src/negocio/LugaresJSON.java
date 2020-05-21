@@ -136,10 +136,20 @@ public class LugaresJSON {
 		return Double.parseDouble(longSinComillas);
 	}
 	
-	
-	
 	public JsonArray getListaLugares() {
 		return listaLugares;
+	}
+	
+	public int JSONsizeNombreMasLargo() {
+		int maxLongitud=0;
+		
+		for (int i = 0; i < listaLugares.size(); i++) {
+			if ( ((JsonObject) getLugar(i)).get("Lugar ").toString().length() > maxLongitud ) {
+				maxLongitud = ((JsonObject) getLugar(i)).get("Lugar ").toString().length();
+			}	
+		}
+		return maxLongitud;
+		
 	}
 
 }

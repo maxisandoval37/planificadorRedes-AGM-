@@ -2,45 +2,9 @@
   "listaLugares": {
     "elements": [
       {
-        "Lugar ": "Bursaco",
-        "latitud ": -34.49382429351597,
-        "longitud ": -58.727760314941406,
-        "provincia ": "Buenos Aires"
-      },
-      {
-        "Lugar ": "Manaos",
-        "latitud ": -34.50881994305569,
-        "longitud ": -58.674888610839844,
-        "provincia ": "Buenos Aires"
-      },
-      {
-        "Lugar ": "Murimbu",
-        "latitud ": -34.53682345812287,
-        "longitud ": -58.73908996582031,
-        "provincia ": "Buenos Aires"
-      },
-      {
-        "Lugar ": "NuevoLugar",
-        "latitud ": -34.49891745811857,
-        "longitud ": -58.739776611328125,
-        "provincia ": "Buenos Aires"
-      },
-      {
-        "Lugar ": "Peru",
-        "latitud ": -49.382372787009544,
-        "longitud ": -70.3125,
-        "provincia ": "Santa Cruz"
-      },
-      {
-        "Lugar ": "Lugar2",
-        "latitud ": -34.500049230223105,
-        "longitud ": -58.739776611328125,
-        "provincia ": "Buenos Aires"
-      },
-      {
-        "Lugar ": "ASDASDASDAS",
-        "latitud ": -34.5328639366582,
-        "longitud ": -58.713340759277344,
+        "Lugar ": "123456789",
+        "latitud ": -34.52833853869864,
+        "longitud ": -58.70647430419922,
         "provincia ": "Buenos Aires"
       }
     ]
