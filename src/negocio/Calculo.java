@@ -1,8 +1,7 @@
 package negocio;
 
 public class Calculo {
-	
-	public Double costosPrim= (double)0;
+
 	
 	public static boolean noEsUnNumuero(char c) {
 		return ((c < '0') || (c > '9')) && (c != '\b');
@@ -35,9 +34,10 @@ public class Calculo {
 			return true;
 		return false;
 	}
-
 	
-	
+	public int adicionalPorAtravesarProvincia(int costoExtra) {
+		return (Grafo.getSetProvinciasSinRepetir().size()-1) * costoExtra;
+	}
 	
 	
 }

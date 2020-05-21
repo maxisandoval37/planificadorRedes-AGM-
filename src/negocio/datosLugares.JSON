@@ -2,10 +2,82 @@
   "listaLugares": {
     "elements": [
       {
-        "Lugar ": "123456789",
-        "latitud ": -34.52833853869864,
-        "longitud ": -58.70647430419922,
+        "Lugar ": "1",
+        "latitud ": -34.53484372092871,
+        "longitud ": -58.73085021972656,
         "provincia ": "Buenos Aires"
+      },
+      {
+        "Lugar ": "2",
+        "latitud ": -34.54106559358218,
+        "longitud ": -58.68999481201172,
+        "provincia ": "Buenos Aires"
+      },
+      {
+        "Lugar ": "4",
+        "latitud ": -34.49099462319422,
+        "longitud ": -58.705787658691406,
+        "provincia ": "Buenos Aires"
+      },
+      {
+        "Lugar ": "asdag",
+        "latitud ": -34.538803148239445,
+        "longitud ": -58.716773986816406,
+        "provincia ": "Buenos Aires"
+      },
+      {
+        "Lugar ": "3",
+        "latitud ": -43.58039085560784,
+        "longitud ": -67.67578125,
+        "provincia ": "Chubut"
+      },
+      {
+        "Lugar ": "5",
+        "latitud ": -30.826780904779778,
+        "longitud ": -68.37890625,
+        "provincia ": "San Juan"
+      },
+      {
+        "Lugar ": "pampa",
+        "latitud ": -37.405073750176925,
+        "longitud ": -65.3466796875,
+        "provincia ": "La Pampa"
+      },
+      {
+        "Lugar ": "rio negro",
+        "latitud ": -41.50857729743933,
+        "longitud ": -68.8623046875,
+        "provincia ": "Rio Negro"
+      },
+      {
+        "Lugar ": "santa cruz",
+        "latitud ": -47.69497434186282,
+        "longitud ": -68.4228515625,
+        "provincia ": "Santa Cruz"
+      },
+      {
+        "Lugar ": "la pampa2",
+        "latitud ": -37.92686760148134,
+        "longitud ": -64.2919921875,
+        "provincia ": "La Pampa"
+      },
+      {
+        "Lugar ": "URU",
+        "latitud ": -33.54139466898275,
+        "longitud ": -56.07421875,
+        "provincia ": "Florida"
+      },
+      {
+        "Lugar ": "EEUU",
+        "latitud ": 39.639537564366684,
+        "longitud ": -91.0546875,
+        "provincia ": "Illinois"
+      },
+      {
+        "Lugar ": "F",
+        "latitud ": -37.300275281344305,
+        "longitud ": -67.8515625,
+        "provincia ": "La Pampa"
       }
     ]
   },

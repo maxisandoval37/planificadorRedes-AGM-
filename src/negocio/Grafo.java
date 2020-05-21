@@ -6,17 +6,19 @@ public class Grafo {
 
 	private List<Arista> listaAristas;//caminos
 	public List<Lugar> listaLugares;
-	
+	static Set<String> provinciasSinRepetir;
+
 	public Grafo() {
 		listaLugares = new LinkedList<Lugar>();
 		listaAristas = new LinkedList<Arista>();
+		provinciasSinRepetir = new HashSet<String>();
 	}
 
-	public void agregarLugar(Lugar l) {
-		if (!(listaLugares.contains(l))) {
-			listaLugares.add(l);
-			cargarAristas(l);
-			
+	public void agregarLugar(Lugar lugar) {
+		if (!(listaLugares.contains(lugar))) {
+			listaLugares.add(lugar);
+			cargarAristas(lugar);
+			provinciasSinRepetir.add(lugar.getProvincia());
 		}
 	}
 
@@ -39,6 +41,10 @@ public class Grafo {
 	
 	public LinkedList<Lugar> getLugares() {
 		return (LinkedList<Lugar>) listaLugares;
+	}
+	
+	public static Set<String> getSetProvinciasSinRepetir() {
+		return provinciasSinRepetir;
 	}
 
 }

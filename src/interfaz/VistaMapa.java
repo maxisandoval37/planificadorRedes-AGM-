@@ -41,6 +41,8 @@ public class VistaMapa {
 	ArrayList<String> lugaresComboBox;
 	LinkedList<MapPolygonImpl> grafoActual;
 	
+	
+	
 	public VistaMapa() {
 		jsonConLugares = new LugaresJSON();
 		jsonConLugares.abrirJSONyCopiar();
@@ -49,7 +51,6 @@ public class VistaMapa {
 		menuInicio = new MenuPrincipal();
 		
 		grafoActual = new LinkedList<MapPolygonImpl>();
-		
 		crearVentana();
 		crearPanelMapa();
 		crearPanelBotones();
@@ -187,6 +188,8 @@ public class VistaMapa {
 	private void accionBotonGenerarMin() {
 		btnAGM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(calculos.adicionalPorAtravesarProvincia(20));
+				
 				jsonConLugares.guardarLugaresEnJSON();//ALMACENA EN EL JSON
 				quitarGrafos();
 				grafoActual = caminos.arbolGeneradorMinimo();
