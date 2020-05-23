@@ -39,7 +39,7 @@ public class ArbolPrim {
 		}
 	}
 	
-	public Arista pesoMinimoSinCiclos(List<Lugar> lugaresRecorridos) {
+	private Arista pesoMinimoSinCiclos(List<Lugar> lugaresRecorridos) { //ESTABA EN PUBLIC
 		Arista min = null;
 		int indice = 0;
 
@@ -69,7 +69,6 @@ public class ArbolPrim {
 		return min;
 	}
 	
-
 	private boolean generaCiclo(List<Lugar> l, Arista arista) {
 		return l.contains(arista.lugarA) && l.contains(arista.lugarB);
 	}

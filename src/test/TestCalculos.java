@@ -26,17 +26,14 @@ class TestCalculos {
 	public void setUp() throws IOException {
 		g1 = new Grafo();
 		
-		
 		calculo=new Calculo();
 
 		aristas = new LinkedList<Arista>();
-
 
 		a=new Lugar("San Miguel",-34.541631195309726 ,-58.713340759277344);
 		b=new Lugar("Polvorines",-34.510517393776254,-58.695831298828125);
 		c=new Lugar("Rio Negro",-41.50857729743933 ,-68.8623046875);
 		d=new Lugar("Santa Cruz",-47.69497434186282,-68.4228515625);
-		
 
 		a1 = new Arista(a, b);
 		a2 = new Arista(b, c);
@@ -57,6 +54,7 @@ class TestCalculos {
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////
+	@SuppressWarnings("static-access")
 	@Test
 	public void testPrecioFinal() {
 		assertTrue(arbol.pesoTotalArbolPrim()==2851930.3055313313);
@@ -78,12 +76,11 @@ class TestCalculos {
 
 
 	///////////////////////////////////////////////////////////////////////////////////
+	@SuppressWarnings("static-access")
 	@Test
     void testIntSePasadeLaLongitudDelString() {
 		assertTrue(calculo.intSePasadeLaLongitudDelString(10.0, "123456789aaaa"));
 		assertFalse(calculo.intSePasadeLaLongitudDelString(10.0, "123"));
-
-
     }
 	///////////////////////////////////////////////////////////////////////////////////
 

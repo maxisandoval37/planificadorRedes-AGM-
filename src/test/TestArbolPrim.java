@@ -10,7 +10,6 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 import negocio.ArbolPrim;
 import negocio.Arista;
 import negocio.Lugar;
@@ -26,7 +25,6 @@ class TestArbolPrim {
 	public void setUp() throws IOException {
 
 		aristas = new LinkedList<Arista>();
-
 
 		a=new Lugar("San Miguel",-34.541631195309726 ,-58.713340759277344);
 		b=new Lugar("Polvorines",-34.510517393776254,-58.695831298828125);
@@ -44,6 +42,7 @@ class TestArbolPrim {
 		arbol = new ArbolPrim(aristas);
 	}
 	///////////////////////////////////////////////////////////////////////////////////
+	@SuppressWarnings("static-access")
 	@Test
 	public void testpesoMinimoSinCiclos() {
 		
@@ -55,10 +54,9 @@ class TestArbolPrim {
 	assertTrue(arbol.getLugaresRecorridos().contains(b));
 	assertTrue(arbol.getLugaresRecorridos().contains(c));
 
-	
-
 	}
 ///////////////////////////////////////////////////////////////////////////////////
+	@SuppressWarnings("static-access")
 	@Test
     void testPesoTotalArbolPrim() {
 

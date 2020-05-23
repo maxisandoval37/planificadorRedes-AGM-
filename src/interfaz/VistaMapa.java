@@ -66,14 +66,14 @@ public class VistaMapa {
 	//			INICIO PANELES
 	private void crearPanelMapa() {
 		panelMapa = new JPanel();
-		panelMapa.setBounds(150, 20, 450, 400);
+		panelMapa.setBounds(80, 20, 600, 400);
 		ventana.getContentPane().add(panelMapa);
 		mapa = new JMapViewer();
 		
 		Coordinate coord = new Coordinate(-34.521, -58.719);
-
+		
+		mapa.setBounds(0, 0, 10000, 1000000);
 		mapa.setDisplayPosition(coord, 12);
-
 		panelMapa.add(mapa);
 	}
 	
@@ -216,7 +216,6 @@ public class VistaMapa {
 				lblPrecioTotalRed.setText("GASTO TOTAL:  $" + 
 				calculos.precioFinal(VistaMenuPrincipal.precioPormetro,VistaMenuPrincipal.porcentajeExtra300km,
 				VistaMenuPrincipal.costoPorPasarProvincia));
-
 			}
 		});
 	}
@@ -287,7 +286,7 @@ public class VistaMapa {
 	
 	private void asignarFondo(){
         lblFondo = new JLabel("");
-        lblFondo.setBounds(0, 0, 800, 600);
+        lblFondo.setBounds(0, 0, 1000, 800);
         ventana.getContentPane().add(lblFondo);
 
         lblFondo.setIcon(new ImageIcon(VistaMenuPrincipal.class.getResource("/interfaz/FONDO.png")));

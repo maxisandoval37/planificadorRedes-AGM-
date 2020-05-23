@@ -26,6 +26,7 @@ public class VistaMenuPrincipal {
 	static Double precioPormetro;
 	static Double porcentajeExtra300km;
 	static Double costoPorPasarProvincia;
+	private TextoTranslucido tp;
 	
 	public VistaMenuPrincipal() {
 		initialize();
@@ -46,11 +47,12 @@ public class VistaMenuPrincipal {
 		limitarInputUsuario(textFieldIngresarPorcenjeAumento);
 		limitarInputUsuario(textFieldIngresarAumentoProvincia);
 		
-		//asignarFondo();
+		asignarFondo();
 	}
 	
 	private void inicializarTF_IngresarPrecioPorMetro() {
 		textFieldIngresarPrecioPorMts = new JTextField();
+		setTp(new TextoTranslucido("PRECIO POR METRO", textFieldIngresarPrecioPorMts));
 		textFieldIngresarPrecioPorMts.setBounds(70,520, 178, 68);
 		menuPP.getContentPane().add(textFieldIngresarPrecioPorMts);
 		textFieldIngresarPrecioPorMts.setColumns(10);
@@ -58,6 +60,7 @@ public class VistaMenuPrincipal {
 	
 	private void inicializarTF_IngresarPorcentaje300km() {
 		textFieldIngresarPorcenjeAumento = new JTextField();
+		setTp(new TextoTranslucido("COSTO POR SUPERAR 300KM", textFieldIngresarPorcenjeAumento));
 		textFieldIngresarPorcenjeAumento.setBounds(408, 520, 178, 68);
 		menuPP.getContentPane().add(textFieldIngresarPorcenjeAumento);
 		textFieldIngresarPorcenjeAumento.setColumns(10);
@@ -65,6 +68,7 @@ public class VistaMenuPrincipal {
 	
 	private void inicializarTF_IngresarIncrementoPorProvincia() {
 		textFieldIngresarAumentoProvincia = new JTextField();
+		setTp(new TextoTranslucido("INCREMENTO POR PROVI.", textFieldIngresarAumentoProvincia));
 		textFieldIngresarAumentoProvincia.setBounds(747, 520, 178, 68);
 		menuPP.getContentPane().add(textFieldIngresarAumentoProvincia);
 		textFieldIngresarAumentoProvincia.setColumns(10);
@@ -122,10 +126,18 @@ public class VistaMenuPrincipal {
 	
 	private void asignarFondo(){
 		lblFondo = new JLabel("");
-		lblFondo.setBounds(0, 0, 800, 600);
+		lblFondo.setBounds(0, 0, 1000, 800);
 		menuPP.getContentPane().add(lblFondo);
 		
 		lblFondo.setIcon(new ImageIcon(VistaMenuPrincipal.class.getResource("/interfaz/HOME.png")));
+	}
+
+	public TextoTranslucido getTp() {
+		return tp;
+	}
+
+	public void setTp(TextoTranslucido tp) {
+		this.tp = tp;
 	}
 
 	

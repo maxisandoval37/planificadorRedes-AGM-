@@ -102,6 +102,18 @@
         "latitud ": -34.53738908867436,
         "longitud ": -58.702354431152344,
         "provincia ": "Buenos Aires"
+      },
+      {
+        "Lugar ": "123",
+        "latitud ": -34.54587308575863,
+        "longitud ": -58.7274169921875,
+        "provincia ": "Buenos Aires"
+      },
+      {
+        "Lugar ": "345",
+        "latitud ": -34.501463923747146,
+        "longitud ": -58.71265411376953,
+        "provincia ": "Buenos Aires"
       }
     ]
   },
