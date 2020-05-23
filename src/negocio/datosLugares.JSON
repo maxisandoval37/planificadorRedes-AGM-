@@ -96,6 +96,12 @@
         "latitud ": -42.68243539838622,
         "longitud ": -69.08203125,
         "provincia ": "Chubut"
+      },
+      {
+        "Lugar ": "1234567890",
+        "latitud ": -34.53738908867436,
+        "longitud ": -58.702354431152344,
+        "provincia ": "Buenos Aires"
       }
     ]
   },

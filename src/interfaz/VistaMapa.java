@@ -7,12 +7,7 @@ import java.io.IOException;
 
 import javax.swing.*;
 import org.openstreetmap.gui.jmapviewer.*;
-
-
 import negocio.*;
-//import negocio.LugaresJSON;
-//import negocio.ArbolPrim;
-//import negocio.Arista;
 
 import interfaz.Conexion;
 
@@ -31,6 +26,8 @@ public class VistaMapa {
 	private JLabel lblPrecioTotalRed;
 	private JLabel lblPrecioPorMTS;
 	private JLabel lblFondo;
+	private JLabel lblAdicional300km;
+	private JLabel lblAdicionalPasarProv;
 	private JComboBox<String> comboBox;
 	private JButton btnEliminar;
 	private JButton btnDibujarGrafo;
@@ -40,9 +37,7 @@ public class VistaMapa {
 	private LugaresJSON jsonConLugares;
 	ArrayList<String> lugaresComboBox;
 	LinkedList<MapPolygonImpl> grafoActual;
-	
-	
-	
+
 	public VistaMapa() {
 		jsonConLugares = new LugaresJSON();
 		jsonConLugares.abrirJSONyCopiar();
@@ -56,13 +51,13 @@ public class VistaMapa {
 		crearPanelBotones();
 		crearPanelLabels();	
 		inicializarBotonReset();
-		asignarFondo();
+		//asignarFondo();
 	}
 
 	private void crearVentana() {
 		ventana = new JFrame();
 		ventana.getContentPane().setBackground(Color.LIGHT_GRAY);
-		ventana.setBounds(800, 600, 800, 600);
+		ventana.setBounds(800, 600, 1000, 800);
 		ventana.setLocationRelativeTo(null);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.getContentPane().setLayout(null);
@@ -71,19 +66,20 @@ public class VistaMapa {
 	//			INICIO PANELES
 	private void crearPanelMapa() {
 		panelMapa = new JPanel();
-		panelMapa.setBounds(0, 0, 450, 400);
+		panelMapa.setBounds(150, 20, 450, 400);
 		ventana.getContentPane().add(panelMapa);
 		mapa = new JMapViewer();
 		
 		Coordinate coord = new Coordinate(-34.521, -58.719);
 
 		mapa.setDisplayPosition(coord, 12);
+
 		panelMapa.add(mapa);
 	}
 	
 	private void crearPanelBotones() {
 		panelBotones = new JPanel();
-		panelBotones.setBounds(481, 0, 209, 400);
+		panelBotones.setBounds(760, 20, 209, 400);
 		panelBotones.setLayout(null);
 		ventana.getContentPane().add(panelBotones);
 		inicializarBotonDibujarGrafo();
@@ -94,35 +90,49 @@ public class VistaMapa {
 	
 	private void crearPanelLabels() {
 		panelLabels = new JPanel();
-		panelLabels.setBounds(10, 422, 577, 139);
+		panelLabels.setBounds(150, 500, 450, 250);
 		panelLabels.setLayout(null);
 		ventana.getContentPane().add(panelLabels);
 		
+		inicializarLabelAdicionalPasarProvincia();
+		inicializarLabelAdicional300km();
 		inicializarLabelPesoArbol();
 		inicializarLabelPrecioPorMTS();
-		inicializarLabePrecioTotalRed();
+		inicializarLabelPrecioTotal();
 		inicializarListaDesplegable();
 	}
 	//			FIN PANELES
 	
 	//				INICIO LABELS
-	private void inicializarLabePrecioTotalRed() {
-		lblPrecioTotalRed = new JLabel();
-		lblPrecioTotalRed.setBounds(200, 10, 195, 23);
-		panelLabels.add(lblPrecioTotalRed);
+	private void inicializarLabelPrecioPorMTS() {
+		lblPrecioPorMTS = new JLabel();
+		lblPrecioPorMTS.setBounds(55, 35, 195, 23); //150,90
+		panelLabels.add(lblPrecioPorMTS);
+		
+	}
+	
+	private void inicializarLabelAdicional300km() {
+		lblAdicional300km = new JLabel();
+		lblAdicional300km.setBounds(55, 75, 395, 23);
+		panelLabels.add(lblAdicional300km);
+	}
+	
+	private void inicializarLabelAdicionalPasarProvincia() {
+		lblAdicionalPasarProv = new JLabel();
+		lblAdicionalPasarProv.setBounds(55, 115, 395, 23);
+		panelLabels.add(lblAdicionalPasarProv);
 	}
 	
 	private void inicializarLabelPesoArbol() {
 		lblpesoArbol = new JLabel();
-		lblpesoArbol.setBounds(200, 50, 195, 23);
+		lblpesoArbol.setBounds(55, 155, 395, 23);
 		panelLabels.add(lblpesoArbol);
 	}
 	
-	private void inicializarLabelPrecioPorMTS() {
-		lblPrecioPorMTS = new JLabel();
-		lblPrecioPorMTS.setBounds(200, 90, 195, 23);
-		panelLabels.add(lblPrecioPorMTS);
-		
+	private void inicializarLabelPrecioTotal() {
+		lblPrecioTotalRed = new JLabel();
+		lblPrecioTotalRed.setBounds(55, 195, 395, 23);
+		panelLabels.add(lblPrecioTotalRed);
 	}
 	//				FIN LABELS
 
@@ -130,7 +140,7 @@ public class VistaMapa {
 	private void inicializarListaDesplegable(){
 			comboBox = new JComboBox<String>();
 			agregarDatosListaDesplegable();
-			comboBox.setBounds(20, 15, jsonConLugares.JSONsizeNombreMasLargo()*10, 25);
+			comboBox.setBounds(45, 290, jsonConLugares.JSONsizeNombreMasLargo()*10, 25);
 			accionComboBox();
 		}
 
@@ -150,7 +160,7 @@ public class VistaMapa {
 	//			INICIO BOTONES
 	private void inicializarBotonDibujarGrafo() {
 		btnDibujarGrafo = new JButton("Dibujar Grafo");
-		btnDibujarGrafo.setBounds(29, 11, 150, 50);
+		btnDibujarGrafo.setBounds(29, 10, 150, 50);
 		panelBotones.add(btnDibujarGrafo);
 		
 		accionBotonDibujarGrafo();
@@ -166,7 +176,7 @@ public class VistaMapa {
 	
 	private void inicializarBotonAGM() {
 		btnAGM = new JButton("Arbol Generador Minimo");
-		btnAGM.setBounds(10, 295, 185, 50);
+		btnAGM.setBounds(10, 170, 185, 50);
 		panelBotones.add(btnAGM);
 
 		accionBotonGenerarMin();
@@ -176,7 +186,7 @@ public class VistaMapa {
 		btnReset = new JButton("REINICIAR");
 		btnReset.setForeground(Color.WHITE);
 		btnReset.setBackground(Color.RED);
-		btnReset.setBounds(597, 527, 93, 23);
+		btnReset.setBounds(850, 728, 93, 23);
 		ventana.getContentPane().add(btnReset);
 		
 		
@@ -195,13 +205,18 @@ public class VistaMapa {
 				for (MapPolygonImpl camino : grafoActual) {
 					mapa.addMapPolygon(camino);
 				}
-				lblPrecioTotalRed.setText("GASTO TOTAL:  $" + 
-				calculos.precioFinal(VistaMenuPrincipal.precioPormetro,VistaMenuPrincipal.porcentajeExtra,
-				VistaMenuPrincipal.costoPorPasarProvincia));
-				
-				lblpesoArbol.setText("PESO ARBOL:  " + ArbolPrim.pesoTotalArbolPrim()+" 'MTS'");
-				
 				lblPrecioPorMTS.setText("COSTO POR METRO:  $" + VistaMenuPrincipal.precioPormetro);
+				
+				lblAdicional300km.setText("ADICIONAL POR SUPERAR 300KM:  $"+VistaMenuPrincipal.porcentajeExtra300km);
+				
+				lblAdicionalPasarProv.setText("ADICIONAL POR ATRAVESAR PROVINCIA:  $"+VistaMenuPrincipal.costoPorPasarProvincia);
+				
+				lblpesoArbol.setText("METROS TOTALES(PESO ARBOL):  " + ArbolPrim.pesoTotalArbolPrim()+" 'MTS'");
+				
+				lblPrecioTotalRed.setText("GASTO TOTAL:  $" + 
+				calculos.precioFinal(VistaMenuPrincipal.precioPormetro,VistaMenuPrincipal.porcentajeExtra300km,
+				VistaMenuPrincipal.costoPorPasarProvincia));
+
 			}
 		});
 	}
@@ -260,10 +275,9 @@ public class VistaMapa {
 				}
 			}
 		});
-		panelLabels.add(comboBox);
+		panelBotones.add(comboBox);
 	}
 	
-
 	private void marcarCoordenadasConJSON(String nombre, double latitud, double longitud) throws IOException {
 		Coordinate coord = new Coordinate(latitud,longitud);
 		mapa.addMapMarker(new MapMarkerDot(nombre, coord));

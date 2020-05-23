@@ -24,7 +24,7 @@ public class VistaMenuPrincipal {
 	private JLabel lblFondo;
 	VistaMapa vistaMapa;
 	static Double precioPormetro;
-	static Double porcentajeExtra;
+	static Double porcentajeExtra300km;
 	static Double costoPorPasarProvincia;
 	
 	public VistaMenuPrincipal() {
@@ -33,39 +33,39 @@ public class VistaMenuPrincipal {
 	
 	private void initialize() {
 		menuPP = new JFrame();
-		menuPP.setBounds(800, 600, 800, 600);
+		menuPP.setBounds(800, 600, 1000, 800);
 		menuPP.setLocationRelativeTo(null);
 		menuPP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		menuPP.getContentPane().setLayout(null);
 
 		inicializarTF_IngresarPrecioPorMetro();
-		inicializarTF_IngresarPorcentaje();
+		inicializarTF_IngresarPorcentaje300km();
 		inicializarTF_IngresarIncrementoPorProvincia();
 		inicializarBotonEnviar();
 		limitarInputUsuario(textFieldIngresarPrecioPorMts);
 		limitarInputUsuario(textFieldIngresarPorcenjeAumento);
 		limitarInputUsuario(textFieldIngresarAumentoProvincia);
 		
-		asignarFondo();
+		//asignarFondo();
 	}
 	
 	private void inicializarTF_IngresarPrecioPorMetro() {
 		textFieldIngresarPrecioPorMts = new JTextField();
-		textFieldIngresarPrecioPorMts.setBounds(70,355, 178, 68);
+		textFieldIngresarPrecioPorMts.setBounds(70,520, 178, 68);
 		menuPP.getContentPane().add(textFieldIngresarPrecioPorMts);
 		textFieldIngresarPrecioPorMts.setColumns(10);
 	}
 	
-	private void inicializarTF_IngresarPorcentaje() {
+	private void inicializarTF_IngresarPorcentaje300km() {
 		textFieldIngresarPorcenjeAumento = new JTextField();
-		textFieldIngresarPorcenjeAumento.setBounds(315, 355, 178, 68);
+		textFieldIngresarPorcenjeAumento.setBounds(408, 520, 178, 68);
 		menuPP.getContentPane().add(textFieldIngresarPorcenjeAumento);
 		textFieldIngresarPorcenjeAumento.setColumns(10);
 	}
 	
 	private void inicializarTF_IngresarIncrementoPorProvincia() {
 		textFieldIngresarAumentoProvincia = new JTextField();
-		textFieldIngresarAumentoProvincia.setBounds(550, 355, 178, 68);
+		textFieldIngresarAumentoProvincia.setBounds(747, 520, 178, 68);
 		menuPP.getContentPane().add(textFieldIngresarAumentoProvincia);
 		textFieldIngresarAumentoProvincia.setColumns(10);
 	}
@@ -86,7 +86,7 @@ public class VistaMenuPrincipal {
 				if (estanLos3TexfieldActivados()) {
 					precioPormetro=Double.parseDouble(textFieldIngresarPrecioPorMts.getText() );
 					costoPorPasarProvincia=Double.parseDouble(textFieldIngresarAumentoProvincia.getText() );
-					porcentajeExtra=Double.parseDouble(textFieldIngresarPorcenjeAumento.getText() );
+					porcentajeExtra300km=Double.parseDouble(textFieldIngresarPorcenjeAumento.getText() );
 					
 					cambiarDeVentana();
 				}
@@ -95,7 +95,7 @@ public class VistaMenuPrincipal {
 				}
 			}
 		});
-		btnEnviar.setBounds(355, 470, 105, 30);
+		btnEnviar.setBounds(440, 700, 105, 30);
 		menuPP.getContentPane().add(btnEnviar);
 	}
 	private void limitarInputUsuario(JTextField tf) {

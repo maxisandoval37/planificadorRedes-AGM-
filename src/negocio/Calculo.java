@@ -38,7 +38,9 @@ public class Calculo {
 	}
 	
 	private Double adicionalPorAtravesarProvincia(Double costoExtra) {
-		return (Grafo.getSetProvinciasSinRepetir().size()-1) * costoExtra;
+		if (Grafo.getSetProvinciasSinRepetir().size()>1) 
+			return (Grafo.getSetProvinciasSinRepetir().size()-1) * costoExtra;
+		return (double)0;
 	}
 	
 	
