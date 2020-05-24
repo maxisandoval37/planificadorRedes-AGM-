@@ -67,7 +67,8 @@ class TestArbolPrim {
         List<Arista> arreglo = new ArrayList<Arista>();
         arreglo.add(a1);
         arreglo.add(a2);
-        assertTrue(arbol.pesoTotalArbolPrim()==7157.0);//ES LA DISTANCIA DE LA SUMA DE AMBAS ARISTAS
+        assertTrue(arbol.pesoTotalArbolPrim()==7158.05374213241
+);//ES LA DISTANCIA DE LA SUMA DE AMBAS ARISTAS
 
     }
 

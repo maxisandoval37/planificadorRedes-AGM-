@@ -38,8 +38,8 @@ class TestLugar {
 ///////////////////////////////////////////////////////////////////////////////////
 	@Test
 	public void testCalcularDistanciaA_B() {
-		assertTrue(a.calcularDistanciaA_B(b)==3813.0); //es la distancia entres esos 2 puntos (polvorines y san miguel aprox)
-		assertTrue(b.calcularDistanciaA_B(c)==3344.0); //distancia entre polvorines y nogues arpox	
+		assertTrue(a.calcularDistanciaA_B(b)==3813.4565538676993); //es la distancia entres esos 2 puntos (polvorines y san miguel aprox)
+		assertTrue(b.calcularDistanciaA_B(c)==3344.59718826471); //distancia entre polvorines y nogues arpox	
 	}
 
 ///////////////////////////////////////////////////////////////////////////////////

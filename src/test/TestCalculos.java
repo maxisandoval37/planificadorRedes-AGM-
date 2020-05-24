@@ -73,6 +73,16 @@ class TestCalculos {
 		
 
 	}
+	///////////////////////////////////////////////////////////////////////////////////
+    @Test
+    void testPreciofinalDetalles() {
+    	
+    	
+    	
+    	assertTrue(calculo.precioFinal(0.0, 0.0, 0.0)==0);
+    	assertTrue(calculo.precioFinal(0.0, 10.0, 0.0)==0);
+
+    }
 
 
 	///////////////////////////////////////////////////////////////////////////////////
