@@ -2,118 +2,34 @@
   "listaLugares": {
     "elements": [
       {
-        "Lugar ": "1",
-        "latitud ": -34.53484372092871,
-        "longitud ": -58.73085021972656,
-        "provincia ": "Buenos Aires"
-      },
-      {
-        "Lugar ": "2",
-        "latitud ": -34.54106559358218,
-        "longitud ": -58.68999481201172,
-        "provincia ": "Buenos Aires"
-      },
-      {
-        "Lugar ": "4",
-        "latitud ": -34.49099462319422,
-        "longitud ": -58.705787658691406,
-        "provincia ": "Buenos Aires"
-      },
-      {
-        "Lugar ": "asdag",
-        "latitud ": -34.538803148239445,
-        "longitud ": -58.716773986816406,
-        "provincia ": "Buenos Aires"
-      },
-      {
-        "Lugar ": "3",
-        "latitud ": -43.58039085560784,
-        "longitud ": -67.67578125,
-        "provincia ": "Chubut"
-      },
-      {
-        "Lugar ": "5",
-        "latitud ": -30.826780904779778,
-        "longitud ": -68.37890625,
-        "provincia ": "San Juan"
-      },
-      {
-        "Lugar ": "pampa",
-        "latitud ": -37.405073750176925,
-        "longitud ": -65.3466796875,
+        "Lugar ": "LA PAMPA",
+        "latitud ": -37.683820326693805,
+        "longitud ": -65.390625,
         "provincia ": "La Pampa"
       },
       {
-        "Lugar ": "rio negro",
-        "latitud ": -41.50857729743933,
-        "longitud ": -68.8623046875,
-        "provincia ": "Rio Negro"
-      },
-      {
-        "Lugar ": "santa cruz",
-        "latitud ": -47.69497434186282,
-        "longitud ": -68.4228515625,
-        "provincia ": "Santa Cruz"
-      },
-      {
-        "Lugar ": "la pampa2",
-        "latitud ": -37.92686760148134,
-        "longitud ": -64.2919921875,
-        "provincia ": "La Pampa"
-      },
-      {
-        "Lugar ": "URU",
-        "latitud ": -33.54139466898275,
-        "longitud ": -56.07421875,
-        "provincia ": "Florida"
-      },
-      {
-        "Lugar ": "EEUU",
-        "latitud ": 39.639537564366684,
-        "longitud ": -91.0546875,
-        "provincia ": "Illinois"
-      },
-      {
-        "Lugar ": "F",
-        "latitud ": -37.300275281344305,
-        "longitud ": -67.8515625,
-        "provincia ": "La Pampa"
-      },
-      {
-        "Lugar ": "asd",
-        "latitud ": -35.96022296929668,
-        "longitud ": -60.205078125,
+        "Lugar ": "BS AS",
+        "latitud ": -36.38591277287651,
+        "longitud ": -58.18359375,
         "provincia ": "Buenos Aires"
       },
       {
-        "Lugar ": "vvv",
-        "latitud ": -25.165173368663943,
-        "longitud ": -64.248046875,
-        "provincia ": "Salta"
+        "Lugar ": "CORDOBA",
+        "latitud ": -32.21280106801518,
+        "longitud ": -62.666015625,
+        "provincia ": "Cordoba"
       },
       {
-        "Lugar ": "ggg",
-        "latitud ": -42.68243539838622,
-        "longitud ": -69.08203125,
-        "provincia ": "Chubut"
+        "Lugar ": "CORRIENTES",
+        "latitud ": -29.64986867797229,
+        "longitud ": -58.5791015625,
+        "provincia ": "Corrientes"
       },
       {
-        "Lugar ": "1234567890",
-        "latitud ": -34.53738908867436,
-        "longitud ": -58.702354431152344,
-        "provincia ": "Buenos Aires"
-      },
-      {
-        "Lugar ": "123",
-        "latitud ": -34.54587308575863,
-        "longitud ": -58.7274169921875,
-        "provincia ": "Buenos Aires"
-      },
-      {
-        "Lugar ": "345",
-        "latitud ": -34.501463923747146,
-        "longitud ": -58.71265411376953,
-        "provincia ": "Buenos Aires"
+        "Lugar ": "SAN LUIS",
+        "latitud ": -35.389049966911664,
+        "longitud ": -65.8740234375,
+        "provincia ": "San Luis"
       }
     ]
   },

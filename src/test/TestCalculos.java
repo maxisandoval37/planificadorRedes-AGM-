@@ -60,28 +60,12 @@ class TestCalculos {
 		assertTrue(arbol.pesoTotalArbolPrim()==2851930.3055313313);
 		assertTrue(calculo.precioFinal(0.5, 5.0, 10000.0)==1517263.410403949);
 		
-		
-		//metros totales*precio por metro
-		//2851930.3055313313*0.5=1425965.1527656657
-		
-		//precio sin adicional+ aumento por suprar los 300km(5% del precio sin adicional)+10k por cada provincia que se pase(son 2 en este caso)
-		// es igual al precio final
-		
-		//1425965.1527656657+71298.25763828328+10000*2=1517263.410403949
-		
-		
-		
-
 	}
 	///////////////////////////////////////////////////////////////////////////////////
     @Test
-    void testPreciofinalDetalles() {
-    	
-    	
-    	
+    void testPreciofinalPrimerCaso() {
     	assertTrue(calculo.precioFinal(0.0, 0.0, 0.0)==0);
     	assertTrue(calculo.precioFinal(0.0, 10.0, 0.0)==0);
-
     }
 
 

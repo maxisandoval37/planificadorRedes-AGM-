@@ -51,7 +51,7 @@ public class VistaMapa {
 		crearPanelBotones();
 		crearPanelLabels();	
 		inicializarBotonReset();
-		//asignarFondo();
+		asignarFondo();
 	}
 
 	private void crearVentana() {
@@ -66,14 +66,14 @@ public class VistaMapa {
 	//			INICIO PANELES
 	private void crearPanelMapa() {
 		panelMapa = new JPanel();
-		panelMapa.setBounds(80, 20, 600, 400);
+		panelMapa.setBounds(150, 20, 450, 400);
 		ventana.getContentPane().add(panelMapa);
 		mapa = new JMapViewer();
 		
 		Coordinate coord = new Coordinate(-34.521, -58.719);
 		
 		mapa.setBounds(0, 0, 10000, 1000000);
-		mapa.setDisplayPosition(coord, 12);
+		mapa.setDisplayPosition(coord, 5);
 		panelMapa.add(mapa);
 	}
 	
@@ -186,7 +186,7 @@ public class VistaMapa {
 		btnReset = new JButton("REINICIAR");
 		btnReset.setForeground(Color.WHITE);
 		btnReset.setBackground(Color.RED);
-		btnReset.setBounds(850, 728, 93, 23);
+		btnReset.setBounds(800, 670, 150, 80);
 		ventana.getContentPane().add(btnReset);
 		
 		
@@ -243,7 +243,11 @@ public class VistaMapa {
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				comboBox.removeAll();//*
+				comboBox.removeAll();
+				VistaMenuPrincipal.costoPorPasarProvincia=(double)0;
+				VistaMenuPrincipal.porcentajeExtra300km=(double)0;
+				VistaMenuPrincipal.precioPormetro=(double)0;
+				
 				
 				ventana.setVisible(false);
 				menuInicio.menuPP.setVisible(true);

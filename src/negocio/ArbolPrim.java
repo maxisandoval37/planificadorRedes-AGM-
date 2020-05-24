@@ -39,7 +39,7 @@ public class ArbolPrim {
 		}
 	}
 	
-	private Arista pesoMinimoSinCiclos(List<Lugar> lugaresRecorridos) { //ESTABA EN PUBLIC
+	private Arista pesoMinimoSinCiclos(List<Lugar> lugaresRecorridos) {
 		Arista min = null;
 		int indice = 0;
 

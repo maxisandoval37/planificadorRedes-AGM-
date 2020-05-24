@@ -19,9 +19,6 @@ class TestLugar {
 ///////////////////////////////////////////////////////////////////////////////////    
 	@BeforeEach
 	public void setUp() throws IOException {
-
-
-	
 		a=new Lugar("San Miguel",-34.541631195309726 ,-58.713340759277344);
 		b=new Lugar("Polvorines",-34.510517393776254,-58.695831298828125);
 		c=new Lugar("Pablo Nogues",-34.48052400815731 ,-58.698577880859375);
@@ -43,6 +40,7 @@ class TestLugar {
 	}
 
 ///////////////////////////////////////////////////////////////////////////////////
+	@SuppressWarnings("static-access")
 	@Test
 	public void testBuscarProvincia() throws JsonIOException, JsonSyntaxException, IOException {
 		assertTrue(a.buscarProvincia(-34.541631195309726,-58.713340759277344 ).equals("Buenos Aires")); 
